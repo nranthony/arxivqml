@@ -1,0 +1,15 @@
+name: arxiv
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.12
+  - pymongo
+  - python-dotenv
+  - ipykernel
+  - schedule
+  - rich
+  - pip
+  - pip:
+    - arxiv
+    - langchain-google-genai
