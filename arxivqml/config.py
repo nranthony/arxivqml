@@ -45,3 +45,6 @@ CATEGORIES = [
     "cond-mat.dis-nn",  # Disordered Systems and Neural Networks (Physics)
     "math-ph"    # Mathematical Physics
 ]
+
+# --- Relevance Score Filtering ---
+MIN_RELEVANCE_SCORE = 5  # Only store papers with score >= this threshold

@@ -29,10 +29,16 @@ def curate_papers(papers: list, guidance_context: str, llm) -> list:
         llm: The initialized ChatGoogleGenerativeAI model.
 
     Returns:
-        List of papers with added curation data.
+        List of papers with added curation data and normalized keywords.
     """
+    from . import database
+
     if not papers:
         return []
+
+    # Load keyword mappings
+    keyword_data = database.load_keyword_mappings()
+    mappings = keyword_data.get("mappings", {})
 
     curated_papers = []
     for paper in papers:
@@ -69,6 +75,16 @@ Respond ONLY with valid JSON in this exact format:
                 response_text = response_text.split("```")[1].split("```")[0].strip()
 
             curation_data = json.loads(response_text)
+
+            # Normalize keywords
+            if 'keywords' in curation_data:
+                normalized_keywords = [
+                    database.normalize_keyword(kw, mappings)
+                    for kw in curation_data['keywords']
+                ]
+                # Deduplicate after normalization
+                curation_data['keywords'] = list(set(normalized_keywords))
+
             curated_paper = {**paper, **curation_data}
             curated_papers.append(curated_paper)
             print(f"Scored '{paper['title'][:60]}...' -> {curation_data['relevance_score']}/10")

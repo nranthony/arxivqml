@@ -9,6 +9,9 @@ dependencies:
   - ipykernel
   - schedule
   - rich
+  - streamlit
+  - pandas
+  - plotly
   - pip
   - pip:
     - arxiv

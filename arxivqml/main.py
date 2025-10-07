@@ -38,14 +38,24 @@ def run_arxiv_search_job():
 
         # Step 2b: Curate and score papers with LLM
         curated_papers = curation.curate_papers(
-            papers=new_papers, 
-            guidance_context=config.GUIDANCE_CONTEXT, 
+            papers=new_papers,
+            guidance_context=config.GUIDANCE_CONTEXT,
             llm=llm
         )
 
-        # Step 2c: Insert curated papers into the database
-        if curated_papers:
-            database.insert_papers(collection, curated_papers)
+        # Step 2c: Filter papers by relevance score threshold
+        filtered_papers = [
+            p for p in curated_papers
+            if p.get('relevance_score', 0) >= config.MIN_RELEVANCE_SCORE
+        ]
+
+        if filtered_papers:
+            print(f"Filtered {len(curated_papers)} papers to {len(filtered_papers)} "
+                  f"(threshold: {config.MIN_RELEVANCE_SCORE}/10)")
+
+        # Step 2d: Insert filtered papers into the database
+        if filtered_papers:
+            database.insert_papers(collection, filtered_papers)
 
     print(f"\n--- Job finished at {datetime.now()} ---")
 

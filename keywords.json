@@ -1,0 +1,85 @@
+{
+  "mappings": {
+    "Quantum Annealing": [
+      "quantum annealing",
+      "quantum annealer",
+      "D-Wave quantum annealing",
+      "quantum annealing algorithm"
+    ],
+    "VQA": [
+      "VQA",
+      "VQAs",
+      "variational quantum algorithm",
+      "variational quantum algorithms"
+    ],
+    "QAOA": [
+      "QAOA",
+      "quantum approximate optimization algorithm"
+    ],
+    "Quantum Kernels": [
+      "quantum kernels",
+      "quantum kernel methods",
+      "quantum kernel method"
+    ],
+    "Feature Selection": [
+      "feature selection",
+      "feature engineering",
+      "feature extraction"
+    ],
+    "D-Wave": [
+      "D-Wave",
+      "D-Wave systems",
+      "D-Wave quantum annealer"
+    ],
+    "Machine Learning": [
+      "machine learning",
+      "ML",
+      "machine-learning"
+    ],
+    "Neural Networks": [
+      "neural networks",
+      "neural network",
+      "NN",
+      "NNs"
+    ],
+    "Optimization": [
+      "optimization",
+      "optimisation",
+      "combinatorial optimization"
+    ]
+  },
+  "hierarchy": {
+    "Quantum Algorithms": {
+      "Quantum Annealing": null,
+      "VQA": {
+        "QAOA": null,
+        "VQE": null
+      },
+      "Quantum Kernels": null,
+      "QNN": null
+    },
+    "Applications": {
+      "Feature Selection": null,
+      "Classification": {
+        "SVM": null,
+        "Neural Networks": null
+      },
+      "Clustering": null,
+      "Optimization": null,
+      "Image Processing": null
+    },
+    "Hardware Platforms": {
+      "D-Wave": null,
+      "IBM Quantum": null,
+      "PennyLane": null,
+      "Xanadu": null
+    },
+    "ML Techniques": {
+      "Supervised Learning": null,
+      "Unsupervised Learning": null,
+      "Reinforcement Learning": null,
+      "Transfer Learning": null
+    }
+  },
+  "unmapped_keywords": []
+}
